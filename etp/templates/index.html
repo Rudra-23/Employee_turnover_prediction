@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Turnover Prediction</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <style>
+        .main{
+            background-color:white;
+            border-radius: 10px;
+            font-size: large;
+            font-weight: bolder;
+            padding-top: 10px;
+        }
+
+        body{
+            background-color: palegoldenrod;
+        }
+        .answer{
+            font-weight: bolder;
+            font-size: large;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center my-3">Employee Turnover Prediction</h1>
+    </div>
+    
+
+    <div class="container main">
+        <form action='/' method="POST" class="row">
+            {% csrf_token %}
+            <div class="form-group col-xl-6">
+                <label for="Satisfaction_level">Satisfaction Level</label>
+                <input type="number" step="any" class="form-control" id="Satisfaction_level" name="Satisfaction_level" placeholder="eg. 0.37 (percentage off 1)" required>
+            </div>
+            <div class="form-group col-xl-6">
+                <label for="Time_spent_in_company">Time Spent In Company</label>
+                <input type="number" class="form-control" id="Time_spent_in_company" name="Time_spent_in_company"
+                    placeholder="eg. 3 (in Years)" required>
+            </div>
+            <div class="form-group col-xl-6">
+                <label for="Last_evaluation">Last Evaluation</label>
+                <input type="number" step="any" id="Last_evaluation" name="Last_evaluation" placeholder="eg. 0.53 (percentage off 1)" required>
+                </select>
+            </div>
+            <div class="form-group col-xl-6">
+                <label for="Work_accident">Work Accident</label>
+                <input type="number" id="Work_accident" name="Work_accident" placeholder="eg. 1" required>
+                </select>
+            </div>
+            <div class="form-group col-xl-6">
+                <label for="Salary_type"> Salary Type</label>
+                <select class="form-control" id="Salary_type" name="Salary_type" required>
+                    <option>High</option>
+                    <option>Low</option>
+                </select>
+            </div>
+            <div class="form-group col-xl-6">
+                <label for="Department_type"> Department Name</label>
+                <select class="form-control" id="Department_type" name="Department_type" required>
+                    <option>RandD</option>
+                    <option>Hr</option>
+                    <option>Management</option>
+                </select>
+            </div>
+            <div class="form-group col-xl-6">
+                <label for="Promotion">Promotion In Last 5 Years</label>
+                <input required type="number" class="form-control" id="Promotion" name="Promotion" placeholder="eg. 1">
+            </div>
+            <div class="form-group col-xl-6">
+            <button class="btn btn-success align-center" type="submit">submit</button>
+            <div>
+        </form>
+    </div>
+    {% if ans == 2 %}
+    <div class="alert alert-primary text-center answer" role="alert">
+        Fill Up
+      </div>
+    {% elif ans == 0.0 %}
+    
+    <div class="alert alert-primary text-center answer" role="alert">
+        The Prediction is he/she will not leave
+      </div>
+    {% elif ans == 1.0 %}
+    <div class="alert alert-primary text-center answer" role="alert">
+        The Prediction is he/she will leave
+      </div>
+    {% endif %}
+</body>
+
+</html>

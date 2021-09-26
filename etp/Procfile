@@ -1,0 +1,1 @@
+web: gunicorn ETP.wsgi:application --log-file -
